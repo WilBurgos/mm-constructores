@@ -2,33 +2,36 @@
     <div id="app">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="#page-top"><img src="./assets/img/logo-mm.png" alt="..." /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars ms-1"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portafolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Acerca de</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#team">Equipo</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                </ul>
+            <div class="container">
+                <a class="navbar-brand" href="#inicio"><img src="./assets/img/logo-mm.png" alt="..." /></a>
+                <button @click="openNav=true" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive" :style="'display:'+(openNav?'block':'none')">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item" @click="openNav=false"><a class="nav-link" href="#servicios">Servicios</a></li>
+                        <li class="nav-item" @click="openNav=false"><a class="nav-link" href="#portafolio">Portafolio</a></li>
+                        <li class="nav-item" @click="openNav=false"><a class="nav-link" href="#acerca">Acerca de</a></li>
+                        <li class="nav-item" @click="openNav=false"><a class="nav-link" href="#equipo">Equipo</a></li>
+                        <li class="nav-item" @click="openNav=false"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
         </nav>
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Bienvenido</div>
-                <div class="masthead-heading text-uppercase">M&M <br> Constructores</div>
+                <img src="./assets/img/logo-mm.png" width="60%" height="60%" alt="..." />
+                <!-- <div class="masthead-subheading">Bienvenido</div> -->
+                <!-- <div class="masthead-heading text-uppercase">
+                    M&M<br>Constructores
+                </div> -->
                 <!-- <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a> -->
             </div>
         </header>
         <!-- Services-->
-        <section class="page-section" id="services">
+        <section class="page-section" id="servicios">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Servicios</h2>
@@ -71,7 +74,7 @@
             </div>
         </section>
         <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
+        <section class="page-section bg-light" id="portafolio">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Portafolio</h2>
@@ -80,7 +83,7 @@
                 <div class="row">
                     <div v-for="project in projects" :key="project.id" class="col-lg-4 col-sm-6 mb-4">
                         <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1" @click="openModal=true,setDataToModal(project)">
+                            <a class="portfolio-link" data-bs-toggle="modal" @click="openModal=true,setDataToModal(project)">
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
@@ -101,18 +104,16 @@
             </div>
         </section>
         <!-- About-->
-        <section class="page-section" id="about">
+        <section class="page-section" id="acerca">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Acerca de</h2>
                     <h3 class="section-subheading text-muted">
                     Somos una empresa constructora dedicada a crear, desarrollar y comercializar proyectos de construcción, trabajamos con el compromiso de satisfacer las necesidades de nuestros clientes enfocándonos en el bienestar y calidad de vida.
                     </h3>
+                    <img src="./assets/img/logo-mm.png" width="50%" height="50%" alt="">
                 </div>
-                <!-- <div class="masthead">
-                    <img src="./assets/img/logo-mm.png" alt="">
-                </div> -->
-                <ul class="timeline">
+                <!-- <ul class="timeline">
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="./assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
@@ -164,11 +165,11 @@
                             </h4>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </div>
         </section>
         <!-- Team-->
-        <section class="page-section bg-light" id="team">
+        <section class="page-section bg-light" id="equipo">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Nuestro increíble equipo</h2>
@@ -217,7 +218,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                    <!-- <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div> -->
                 </div>
             </div>
         </section>
@@ -241,11 +242,11 @@
             </div>
         </div> -->
         <!-- Contact-->
-        <section class="page-section" id="contact">
+        <section class="page-section" id="contacto">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contacto</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -321,7 +322,7 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2021</div>
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; mm-constructores.netlify.app 2021</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <!-- <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a> -->
                         <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/MM-Constructores-100912808754000" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -336,7 +337,7 @@
         </footer>
         <!-- Modal -->
 <div :class="'modal fade '+(openModal==false?'':'show')" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" :style="openModal==false?'display: none;':'padding-right: 0px; display: block;'">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ proyecto.name }}</h5>
@@ -625,7 +626,7 @@
     </div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
+// import * as bootstrap from 'bootstrap';
 import projects_json from './assets/names-projects.json';
 import { mapState } from 'vuex';
 import { slider, slideritem } from 'vue-concise-slider';
@@ -637,6 +638,7 @@ export default {
     props:[],
     data(){
         return {
+            openNav:false,
             openModal:false,
             projects:projects_json,
             options: {
